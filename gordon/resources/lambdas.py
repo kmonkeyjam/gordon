@@ -648,7 +648,10 @@ class JavaLambda(Lambda):
             return [['java/build/libs/java.jar', '_gloader.jar']]
 
     def _get_default_build_command(self, destination):
-        return "{gradle_path} build -Ptarget={target} {gradle_build_extra}"
+        if self.project.mvn:
+          return "mvn -DoutputDir={target} package"
+        else:
+          return "{gradle_path} build -Ptarget={target} {gradle_build_extra}"
 
     def _get_default_run_command(self):
         return 'java -cp "_gloader.jar:lib/*:." gordon.GordonLoader {handler} {name} {memory} {timeout}'

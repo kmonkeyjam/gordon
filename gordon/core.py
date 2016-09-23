@@ -107,6 +107,7 @@ class BaseProject(object):
         self.path = path
         self.stdin = stdin
         self.debug = kwargs.pop('debug', False)
+        self.mvn = kwargs.pop('mvn', False)
         self.build_path = os.path.join(self.path, '_build')
         self.root = os.path.dirname(os.path.abspath(__file__))
         self.settings = utils.load_settings(

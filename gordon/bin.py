@@ -35,7 +35,12 @@ def main(argv=None, stdin=None):
         p.add_argument("--debug",
                        dest="debug",
                        action="store_true",
-                       help="Verbose output for debugging purpouses.")
+                       help="Verbose output for debugging purposes.")
+
+        p.add_argument("--mvn",
+                       dest="mvn",
+                       action="store_true",
+                       help="use maven for packaging instead of gradle")
 
     startproject_parser = subparsers.add_parser('startproject', description='Start a new project')
     add_default_arguments(startproject_parser)
